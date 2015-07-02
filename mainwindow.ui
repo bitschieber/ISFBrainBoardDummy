@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>486</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>IP:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Port:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditIP">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>15</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>127.0.0.1</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditPort">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>45</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4646</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonStartServer">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>45</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>StartServer</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsViewSimulationView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>391</width>
+      <height>281</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>20</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Steps:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelStepCounter">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>20</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>undefined</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonReset">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>70</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSliderSpeed">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>50</y>
+      <width>160</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-4000</number>
+    </property>
+    <property name="maximum">
+     <number>4000</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>30</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Speed (mm/s):</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="horizontalSliderSteeringAngle">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>110</y>
+      <width>160</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-20</number>
+    </property>
+    <property name="maximum">
+     <number>20</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>90</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SteeringAngle (deg):</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSliderSpeed">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>30</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>undefined</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSliderSteeringAngle">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>90</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>undefined</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

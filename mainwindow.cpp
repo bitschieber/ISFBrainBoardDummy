@@ -29,13 +29,16 @@ void MainWindow::init()
 
 void MainWindow::on_pushButtonStartServer_clicked()
 {
-    _tcpServer = new TCPServerController(this,ui->lineEditIP->text(),ui->lineEditPort->text().toUInt());
-    connect(_tcpServer, SIGNAL(dataReceived(QByteArray)), this, SLOT(SimulationDataReceived(QByteArray)));
+    _tcpServerImage = new TCPServerController(this,ui->lineEditIP->text(),ui->lineEditPort->text().toUInt());
+    connect(_tcpServerImage, SIGNAL(dataReceived(QByteArray)), this, SLOT(ImageReceived(QByteArray)));
+
+    _tcpServerData = new TCPServerController(this,ui->lineEditIP->text(),4747);
+    connect(_tcpServerData, SIGNAL(dataReceived(QByteArray)), this, SLOT(DataReceived(QByteArray)));
 
     ui->pushButtonStartServer->setText("Connected");
 }
 
-void MainWindow::SimulationDataReceived(QByteArray data)
+void MainWindow::ImageReceived(QByteArray data)
 {
     _stepCounter++;
     _simulationViewImage = QImage::fromData(data,"JPEG");//the second param is format name
@@ -55,7 +58,21 @@ void MainWindow::SimulationDataReceived(QByteArray data)
     memcpy(_outbutBuffer,&_dataToUc,sizeof(DATA_SET_BRAIN_BOARD_UC_t));
     memcpy(sendData.data(),&_dataToUc,sizeof(DATA_SET_BRAIN_BOARD_UC_t));
 
-    _tcpServer->sendData(sendData,sizeof(DATA_SET_BRAIN_BOARD_UC_t));
+    _tcpServerData->sendData(sendData,sizeof(DATA_SET_BRAIN_BOARD_UC_t));
+}
+
+void MainWindow::DataReceived(QByteArray data)
+{
+    DATA_SET_UC_BRAIN_BOARD_t ucData;
+    memcpy(&ucData,data.data(),sizeof(DATA_SET_UC_BRAIN_BOARD_t));
+
+    if(ucData.start_sequence == START_SEQUNCE && ucData.end_sequence == END_SEQUNCE)
+    {
+        ui->labelUcSpeed->setText(QString::number(ucData.speed_mms));
+        ui->labelUcSpeedPWM->setText(QString::number(ucData.speed_pwm));
+        ui->labelUcSteering->setText(QString::number(ucData.steering_angle));
+        ui->labelUcSteeringPWM->setText(QString::number(ucData.steering_angle_pwm));
+    }
 }
 
 
@@ -89,6 +106,10 @@ DATA_SET_BRAIN_BOARD_UC_t MainWindow::testParameter02(void)
 
     newParameter.speed_mms = ui->horizontalSliderSpeed->value();
     newParameter.steering_angle = ui->horizontalSliderSteeringAngle->value();
+    newParameter.gpio_state = 0;
+    newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_INDICATOR_LFET);
+    newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_INDICATOR_RIGHT);
+    newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_DRIVING_LIGHT);
 
     return newParameter;
 }
@@ -108,7 +129,7 @@ DATA_SET_BRAIN_BOARD_UC_t parameterFromImage(QImage image)
 
 void MainWindow::on_pushButtonReset_clicked()
 {
-    _tcpServer->disconnect();
+    //_tcpServer->disconnect();
     ui->pushButtonStartServer->setText("Disconnected");
     init();
 }

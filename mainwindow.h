@@ -20,7 +20,8 @@ public:
 
 private slots:
     void on_pushButtonStartServer_clicked();
-    void SimulationDataReceived(QByteArray data);
+    void ImageReceived(QByteArray data);
+    void DataReceived(QByteArray data);
 
     void on_pushButtonReset_clicked();
 
@@ -35,7 +36,8 @@ private:
     DATA_SET_BRAIN_BOARD_UC_t parameterFromImage(QImage image);
 
     Ui::MainWindow *ui;
-    TCPServerController* _tcpServer;
+    TCPServerController* _tcpServerImage;
+    TCPServerController* _tcpServerData;
     QImage _simulationViewImage;
     QGraphicsScene _simulationViewScene;
     int _stepCounter = 0;

@@ -2,18 +2,27 @@
 
 TCPServerController::TCPServerController(QObject *parent,QString ip, quint16 port) : QObject(parent){
 //TCPServerController::TCPServerController(quint16 port){
+
+    if(server!=0)
+    {
+        server->close();
+        server->disconnect();
+    }
     server = new QTcpServer(this);
     socket = 0;
     QHostAddress add;
     add.setAddress(ip);
 
+    disconnect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
     if(!server->listen(add, port))
     //if(!server->listen(QHostAddress::Any, port))
     //if(!server->listen("192.168.178.80", 25000))
     {
+
         qDebug() << "Server could not start!";
+        qDebug() << server->errorString();
     }
     else
     {

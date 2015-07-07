@@ -25,7 +25,7 @@ public slots:
     void readyRead();
 
 private:
-    QTcpServer *server;
+    QTcpServer *server = 0;
     QTcpSocket *socket;
     //char _outbutBuffer[sizeof(DATA_SET_BRAIN_BOARD_UC_t)];
     //char _outbutBuffer[sizeof(DATA_SET_MONITOR_t)];

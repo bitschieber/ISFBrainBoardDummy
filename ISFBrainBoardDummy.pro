@@ -17,12 +17,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    Netzwerk/TCPClientController.cpp \
-    Netzwerk/TCPServerController.cpp
+    network/tcpclientcontroller.cpp \
+    network/tcpervercontroller.cpp
 
 HEADERS  += mainwindow.h \
-    Netzwerk/TCPClientController.h \
-    Netzwerk/TCPServerController.h \
-    isfdata.h
+    isfdata.h \
+    network/tcpclientcontroller.h \
+    network/tcpservercontroller.h
 
 FORMS    += mainwindow.ui

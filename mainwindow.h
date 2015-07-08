@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QCloseEvent>
-#include "Netzwerk/TCPServerController.h"
+#include "network/tcpservercontroller.h"
 #include <QGraphicsScene>
 #include "isfdata.h"
 

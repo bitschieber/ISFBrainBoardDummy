@@ -1,4 +1,4 @@
-#include "TCPClientController.h"
+#include "tcpclientcontroller.h"
 
 TCPClientController::TCPClientController(QObject *parent,QString ip, quint16 port) : QObject(parent)
 {

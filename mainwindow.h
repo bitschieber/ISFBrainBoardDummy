@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QCloseEvent>
 #include "Netzwerk/TCPServerController.h"
 #include <QGraphicsScene>
 #include "isfdata.h"
@@ -30,6 +32,7 @@ private slots:
     void on_horizontalSliderSteeringAngle_valueChanged(int value);
 
 private:
+    void closeEvent (QCloseEvent *event);
     void init();
     DATA_SET_BRAIN_BOARD_UC_t testParameter01(DATA_SET_BRAIN_BOARD_UC_t current);
     DATA_SET_BRAIN_BOARD_UC_t testParameter02(void);

@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->graphicsViewSimulationView->setScene(&_simulationViewScene);
+
+    _tcpServerImage = 0;
+    _tcpServerData = 0;
     init();
 }
 
@@ -17,8 +20,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent (QCloseEvent *event)
+{
+    QMessageBox::StandardButton resBtn = QMessageBox::question( this," APP_NAME",
+                                                                tr("Are you sure?\n"),
+                                                                QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
+                                                                QMessageBox::Yes);
+    if (resBtn != QMessageBox::Yes) {
+        event->ignore();
+    } else {
+
+        delete _tcpServerImage;
+        delete _tcpServerData;
+
+        event->accept();
+    }
+}
+
 void MainWindow::init()
 {
+    delete _tcpServerImage;
+    delete _tcpServerData;
     _dataToUc.speed_mms = 0;
     _dataToUc.steering_angle = 0;
     _stepCounter = 0;

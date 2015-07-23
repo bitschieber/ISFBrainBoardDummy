@@ -31,6 +31,8 @@ enum GPIO_PINS{LED_INDICATOR_LFET, LED_INDICATOR_RIGHT, LED_BACKWARD, LED_DRIVIN
 struct DATA_SET_BRAIN_BOARD_UC_t{
     uint32_t start_sequence = START_SEQUNCE;
     int32_t steering_angle = 0; //Grad
+    int32_t mouse_sensor_dx = 0;
+    int32_t mouse_sensor_dy = 0;
     int32_t speed_mms = 0; //mm/s
     uint32_t gpio_state = 0;
     uint32_t end_sequence = END_SEQUNCE;

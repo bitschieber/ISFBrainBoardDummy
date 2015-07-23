@@ -63,6 +63,10 @@ void MainWindow::on_pushButtonStartServer_clicked()
 void MainWindow::ImageReceived(QByteArray data)
 {
     _stepCounter++;
+    //uint32_t* _dataLength = new uint32_t();
+
+    data.remove(0,4);
+
     _simulationViewImage = QImage::fromData(data,"JPEG");//the second param is format name
     _simulationViewScene.addPixmap(QPixmap().fromImage(_simulationViewImage));
     ui->graphicsViewSimulationView->show();

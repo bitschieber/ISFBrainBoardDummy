@@ -132,10 +132,12 @@ DATA_SET_BRAIN_BOARD_UC_t MainWindow::testParameter02(void)
 
     newParameter.speed_mms = ui->horizontalSliderSpeed->value();
     newParameter.steering_angle = ui->horizontalSliderSteeringAngle->value();
+    /*
     newParameter.gpio_state = 0;
     newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_INDICATOR_LFET);
     newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_INDICATOR_RIGHT);
     newParameter.gpio_state  =  newParameter.gpio_state | (1 << LED_DRIVING_LIGHT);
+    */
 
     return newParameter;
 }
